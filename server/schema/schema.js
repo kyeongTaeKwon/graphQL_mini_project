@@ -1,6 +1,13 @@
 const graphql = require("graphql");
-
+const _ = require("lodash");
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+
+//더미 데이터
+const books = [
+  { name: "Name of the Wind", genre: "Fantasy", id: "1" },
+  { name: "The Final Empire", genre: "Fantasy", id: "2" },
+  { name: "The Long Earth", genre: "Sci-Fi", id: "3" },
+];
 
 const BookType = new GraphQLObjectType({
   name: "Book",
@@ -18,7 +25,8 @@ const RootQuery = new GraphQLObjectType({
       type: BookType,
       args: { id: { type: GraphQLString } },
       resolve(parent, args) {
-        // 데이터베이스,다른 곳 에서 데이터를 가져온다
+        //해당 쿼리문을 받을 시 실행되는 함수 => promise의 resolve와 동일하게 작동
+        return _.find(books, { id: args.id });
       },
     },
   },
