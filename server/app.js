@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 mongoose
   .connect(
-    "mongodb+srv://kwon:!rudxo7716@cluster0.hslgl.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "mongodb+srv://kwon:!rudxo7716@cluster0.hslgl.mongodb.net/graphql_kwon?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connencted to Database"))
