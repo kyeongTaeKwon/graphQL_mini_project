@@ -55,6 +55,7 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         //해당 쿼리문을 받을 시 실행되는 함수 => promise의 resolve와 동일하게 작동
         // return _.find(books, { id: args.id });
+        // console.log(args);
         return Book.findById(args.id);
       },
     },
@@ -110,6 +111,7 @@ const Mutation = new GraphQLObjectType({
       },
       resolve(parent, args) {
         const { name, genre, authorId } = args;
+        console.log(args);
         let book = new Book({
           name,
           genre,
